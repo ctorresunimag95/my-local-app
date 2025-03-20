@@ -1,0 +1,6 @@
+@host = http://localhost:43302
+
+GET {{host}}/movies/38469c25-02b9-48c2-b7c1-9a6457000ac3
+Accept: application/json
+
+###

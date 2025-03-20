@@ -1,0 +1,119 @@
+﻿name: cinema
+
+services:
+  management:
+    image: cinema.management
+    build:
+      context: .
+      dockerfile: Cinema.Management/Dockerfile
+    environment:
+      - ServiceBusConnectionString=Endpoint=sb://sb-emulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
+      - CosmosDb__Endpoint=https://cosmos-db:8081/
+      - CosmosDb__Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    ports:
+      - "43301:8080"
+    depends_on:
+      - sb-emulator
+      - cosmos-db
+    networks:
+      cinema:
+        aliases:
+          - "management"
+  
+  reservation:
+    image: cinema.reservation
+    build:
+      context: .
+      dockerfile: Cinema.Reservation/Dockerfile
+    environment:
+      - ServiceBusConnectionString=Endpoint=sb://sb-emulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
+      - RedisConnectionString=redis:6379
+    ports:
+      - "43302:8080"
+    depends_on:
+      - sb-emulator
+      - redis
+    networks:
+      cinema:
+        aliases:
+          - "reservation"
+  
+  sb-emulator:
+    container_name: "cinema.sb-emulator"
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    volumes:
+      - "${CONFIG_PATH}:/ServiceBus_Emulator/ConfigFiles/Config.json"
+    ports:
+      - "5672:5672"
+    environment:
+      SQL_SERVER: sqledge
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+      ACCEPT_EULA: ${ACCEPT_EULA}
+    depends_on:
+      - sqledge
+    networks:
+      cinema:
+        aliases:
+          - "sb-emulator"
+
+  sqledge:
+    container_name: "cinema.sqledge"
+    image: "mcr.microsoft.com/azure-sql-edge:latest"
+    networks:
+      cinema:
+        aliases:
+          - "sqledge"
+    environment:
+      ACCEPT_EULA: ${ACCEPT_EULA}
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+
+  aspire-dashboard:
+    container_name: cinema.aspire-dashboard
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.1
+    restart: always
+    ports:
+      - "18888:18888"
+      - "4317:18889"
+    environment:
+      - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
+    networks:
+      cinema:
+        aliases:
+          - "aspire-dashboard"
+  
+  cosmos-db:
+    container_name: cinema.cosmos-db
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+    environment:
+#      - AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE=127.0.0.1
+      - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+    ports:
+      - "8081:8081"
+      - "10350-10355:10250-10255"
+    restart: always
+    volumes:
+      - cosmos-drive:/tmp/cosmos/appdata
+    networks:
+      cinema:
+        aliases:
+          - "cosmos-db"
+            
+  redis:
+    container_name: cinema.redis
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    restart: always
+    networks:
+      cinema:
+        aliases:
+          - "redis"
+
+volumes:
+  cosmos-drive:
+
+networks:
+  cinema:
