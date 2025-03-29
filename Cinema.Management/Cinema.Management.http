@@ -1,14 +1,14 @@
-@host = http://localhost:43301
+@host = http://localhost:5153
 
 POST {{host}}/movies/publish
 Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Lion King 2",
-  "description": "The lion king movie",
+  "name": "Blancanieves",
+  "description": "A bad movie!",
   "genre": "Adventure",
   "producer": "Dreams",
-  "releaseDate": "2024-03-15"
+  "releaseDate": "2024-03-27"
 }
 ###

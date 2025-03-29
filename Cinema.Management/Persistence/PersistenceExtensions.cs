@@ -12,6 +12,7 @@ internal static class PersistenceExtensions
             authKeyOrResourceToken: configuration["CosmosDb:Key"],
             clientOptions: new()
             {
+                LimitToEndpoint = true,
                 HttpClientFactory = () => new HttpClient(new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback =

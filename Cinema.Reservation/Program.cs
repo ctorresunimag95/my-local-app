@@ -1,5 +1,6 @@
 using Cinema.Reservation.Bus;
 using Cinema.Reservation.Cache;
+using Cinema.Reservation.Models;
 using Cinema.Reservation.Movies.Publish;
 using Cinema.Reservation.Otel;
 using Scalar.AspNetCore;
@@ -29,7 +30,7 @@ app.MapGet("movies/{id:guid}", async (Guid id
     , IFusionCache cache
     , CancellationToken cancellationToken) =>
 {
-    var movie = await cache.GetOrDefaultAsync($"movies-{id}", defaultValue: default(MovieCreatedEvent),
+    var movie = await cache.GetOrDefaultAsync($"movies-{id}", defaultValue: default(Movie),
         token: cancellationToken);
 
     return Results.Ok(movie);
