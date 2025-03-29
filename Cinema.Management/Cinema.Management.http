@@ -5,9 +5,9 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Lion King 2",
-  "description": "The lion king movie",
-  "genre": "Adventure",
+  "name": "Hitman",
+  "description": "Hitman",
+  "genre": "Action",
   "producer": "Dreams",
   "releaseDate": "2024-03-15"
 }

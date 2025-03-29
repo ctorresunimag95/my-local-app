@@ -40,7 +40,9 @@ public class BusProcessor : IAsyncDisposable
         
         var @event = JsonSerializer.Deserialize<MovieCreatedEvent>(body);
         
-        var handler = _serviceProvider.GetRequiredService<MovieCreatedHandler>();
+        using var scope = _serviceProvider.CreateScope();
+
+        var handler = scope.ServiceProvider.GetRequiredService<MovieCreatedHandler>();
         
         await handler.HandleAsync(@event!, arg.CancellationToken);
 
