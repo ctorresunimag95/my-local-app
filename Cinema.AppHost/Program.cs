@@ -23,17 +23,15 @@ var cosmos = builder.AddAzureCosmosDB("cosmos-db").RunAsEmulator(
 
 
 var management = builder.AddProject<Projects.Cinema_Management>("management")
-    .WithEnvironment("ServiceBusConnectionString", serviceBus.Resource.ConnectionStringExpression)
-    .WithEnvironment("CosmosDb__Endpoint",
-        "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==")
-    .WithEnvironment("CosmosDb__Endpoint", "https://localhost:49254/")
-    .WithEnvironment("CosmosEndpointTest", cosmos.Resource.GetEndpoint("emulator"))
+    .WithEnvironment("ConnectionStrings__service-bus", serviceBus.Resource.ConnectionStringExpression)
+    .WithEnvironment("ConnectionStrings__cosmos-db",
+        cosmos.Resource.ConnectionStringExpression)
     .WaitFor(serviceBus)
     .WaitFor(cosmos);
 
 var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
-    .WithEnvironment("RedisConnectionString", cache.Resource.ConnectionStringExpression)
-    .WithEnvironment("ServiceBusConnectionString", serviceBus.Resource.ConnectionStringExpression)
+    .WithEnvironment("ConnectionStrings__redis", cache.Resource.ConnectionStringExpression)
+    .WithEnvironment("ConnectionStrings__service-bus", serviceBus.Resource.ConnectionStringExpression)
     .WaitFor(cache)
     .WaitFor(serviceBus)
     // Added this wait to avoid service bus connectivity error. Waiting for management will help to wait SB being ready

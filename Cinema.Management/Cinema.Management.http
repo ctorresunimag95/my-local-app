@@ -5,10 +5,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Blancanieves",
-  "description": "A bad movie!",
-  "genre": "Adventure",
-  "producer": "Dreams",
-  "releaseDate": "2024-03-27"
+  "name": "Hangover 2",
+  "description": "Friends doing crazy things",
+  "genre": "Comedy",
+  "producer": "Liongstage",
+  "releaseDate": "2015-03-27"
 }
 ###
