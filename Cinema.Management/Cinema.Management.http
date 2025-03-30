@@ -5,10 +5,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Hangover 2",
-  "description": "Friends doing crazy things",
-  "genre": "Comedy",
-  "producer": "Liongstage",
+  "name": "Busqueda implacable",
+  "description": "Lorem ipsum",
+  "genre": "Action",
+  "producer": "Sony",
   "releaseDate": "2015-03-27"
 }
 ###
