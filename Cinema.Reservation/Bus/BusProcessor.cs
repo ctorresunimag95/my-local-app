@@ -15,8 +15,8 @@ public class BusProcessor : IAsyncDisposable
     {
         _logger = logger;
         _serviceProvider = serviceProvider;
-
-        _serviceBusClient = new ServiceBusClient(config.GetConnectionString("service-bus"));
+        
+        _serviceBusClient = new ServiceBusClient(config.GetConnectionString("serviceBus"));
     }
 
     public async Task StartProcessorAsync()
@@ -41,7 +41,7 @@ public class BusProcessor : IAsyncDisposable
         var @event = JsonSerializer.Deserialize<MovieCreatedEvent>(body);
         
         using var scope = _serviceProvider.CreateScope();
-        
+
         var handler = scope.ServiceProvider.GetRequiredService<MovieCreatedHandler>();
         
         await handler.HandleAsync(@event!, arg.CancellationToken);

@@ -5,7 +5,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Busqueda implacable",
+  "name": "Busqueda implacable 2",
   "description": "Lorem ipsum",
   "genre": "Action",
   "producer": "Sony",

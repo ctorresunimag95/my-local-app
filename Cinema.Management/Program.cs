@@ -13,7 +13,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddAzureClients(bus =>
 {
-    bus.AddServiceBusClient(builder.Configuration.GetConnectionString("service-bus"));
+    bus.AddServiceBusClient(builder.Configuration.GetConnectionString("serviceBus"));
 });
 
 builder.Services.AddScoped<PublishMovieHandler>();

@@ -12,7 +12,7 @@ var serviceBus = builder.AddAzureServiceBus("serviceBus")
             path: "../containers/service-bus/config.json");
     });
 
-var cosmos = builder.AddAzureCosmosDB("cosmos-db").RunAsEmulator(
+var cosmos = builder.AddAzureCosmosDB("cosmosDb").RunAsEmulator(
     emulator =>
     {
         emulator
@@ -23,14 +23,14 @@ var cosmos = builder.AddAzureCosmosDB("cosmos-db").RunAsEmulator(
 
 
 var management = builder.AddProject<Projects.Cinema_Management>("management")
-    .WithReference(serviceBus, connectionName: "service-bus")
-    .WithReference(cosmos, connectionName: "cosmos-db")
+    .WithReference(serviceBus, connectionName: "serviceBus")
+    .WithReference(cosmos, connectionName: "cosmosDb")
     .WaitFor(serviceBus)
     .WaitFor(cosmos);
 
 var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     .WithReference(cache, "redis")
-    .WithReference(serviceBus, "service-bus")
+    .WithReference(serviceBus, "serviceBus")
     .WaitFor(cache)
     .WaitFor(serviceBus)
     // Added this wait to avoid service bus connectivity error. Waiting for management will help to wait SB being ready
