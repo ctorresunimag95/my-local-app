@@ -30,7 +30,7 @@ internal static class CacheExtensions
             .WithDistributedCache(
                 new RedisCache(new RedisCacheOptions
                 {
-                    Configuration = configuration["RedisConnectionString"],
+                    Configuration = configuration.GetConnectionString("redis"),
                     InstanceName = "cinema_"
                 })
             );

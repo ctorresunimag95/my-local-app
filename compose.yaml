@@ -7,10 +7,9 @@ services:
       context: .
       dockerfile: Cinema.Management/Dockerfile
     environment:
-      - ServiceBusConnectionString=Endpoint=sb://sb-emulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;
+      - ConnectionStrings__serviceBus=Endpoint=sb://sb-emulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
-      - CosmosDb__Endpoint=https://cosmos-db:8081/
-      - CosmosDb__Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+      - ConnectionStrings__cosmosDb=AccountEndpoint=https://cosmos-db:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
     ports:
       - "43301:8080"
     depends_on:
@@ -27,9 +26,9 @@ services:
       context: .
       dockerfile: Cinema.Reservation/Dockerfile
     environment:
-      - ServiceBusConnectionString=Endpoint=sb://sb-emulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;
+      - ConnectionStrings__serviceBus=Endpoint=sb://sb-emulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
-      - RedisConnectionString=redis:6379
+      - ConnectionStrings__redis=redis:6379
     ports:
       - "43302:8080"
     depends_on:

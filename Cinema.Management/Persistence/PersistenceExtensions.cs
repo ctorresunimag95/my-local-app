@@ -8,8 +8,7 @@ internal static class PersistenceExtensions
         IConfiguration configuration)
     {
         services.AddSingleton(new CosmosClient(
-            accountEndpoint: configuration["CosmosDb:Endpoint"],
-            authKeyOrResourceToken: configuration["CosmosDb:Key"],
+            connectionString: configuration.GetConnectionString("cosmosDb"),
             clientOptions: new()
             {
                 LimitToEndpoint = true,

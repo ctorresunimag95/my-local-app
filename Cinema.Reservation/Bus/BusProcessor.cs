@@ -15,8 +15,8 @@ public class BusProcessor : IAsyncDisposable
     {
         _logger = logger;
         _serviceProvider = serviceProvider;
-
-        _serviceBusClient = new ServiceBusClient(config["ServiceBusConnectionString"]);
+        
+        _serviceBusClient = new ServiceBusClient(config.GetConnectionString("serviceBus"));
     }
 
     public async Task StartProcessorAsync()

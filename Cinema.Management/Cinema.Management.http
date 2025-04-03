@@ -5,7 +5,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Hitman",
+  "name": "Hitman 3",
   "description": "Hitman",
   "genre": "Action",
   "producer": "Dreams",
