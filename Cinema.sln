@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Reservation", "Cinema.Reservation\Cinema.Reservation.csproj", "{EB8BBCD5-CBD4-4EAE-A25D-0AA4CC529DCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.AppHost", "Cinema.AppHost\Cinema.AppHost.csproj", "{C389D480-9A66-46DC-88E6-A22C5611D76B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{EB8BBCD5-CBD4-4EAE-A25D-0AA4CC529DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB8BBCD5-CBD4-4EAE-A25D-0AA4CC529DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB8BBCD5-CBD4-4EAE-A25D-0AA4CC529DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

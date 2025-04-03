@@ -1,14 +1,14 @@
-@host = http://localhost:43301
+@host = http://localhost:5153
 
 POST {{host}}/movies/publish
 Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Hitman 3",
-  "description": "Hitman",
+  "name": "Busqueda implacable 2",
+  "description": "Lorem ipsum",
   "genre": "Action",
-  "producer": "Dreams",
-  "releaseDate": "2024-03-15"
+  "producer": "Sony",
+  "releaseDate": "2015-03-27"
 }
 ###
