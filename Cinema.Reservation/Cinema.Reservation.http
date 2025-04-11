@@ -1,6 +1,6 @@
 @host = http://localhost:5020
 
-GET {{host}}/movies/ae718a3f-1bd1-43d7-b33d-7ca687b179fd
+GET {{host}}/movies/fcb50ca5-172c-451a-b6fe-9956bd5cf9a6
 Accept: application/json
 
 ###
