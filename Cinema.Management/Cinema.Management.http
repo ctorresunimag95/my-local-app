@@ -5,10 +5,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Busqueda implacable 4",
+  "name": "Avengers",
   "description": "Lorem ipsum",
-  "genre": "Action",
-  "producer": "Sony",
+  "genre": "Heroes",
+  "producer": "Marvel",
   "releaseDate": "2015-03-27"
 }
 ###

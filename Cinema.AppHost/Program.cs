@@ -1,15 +1,16 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache")
-        .WithRedisInsight()
-    // .WithLifetime(ContainerLifetime.Persistent)
-    ;
+    .WithRedisInsight()
+    .WithLifetime(ContainerLifetime.Persistent);
 
 var serviceBus = builder.AddAzureServiceBus("serviceBus")
     .RunAsEmulator(emulator =>
     {
         emulator.WithConfigurationFile(
             path: "../containers/service-bus/config.json");
+
+        emulator.WithLifetime(ContainerLifetime.Persistent);
     });
 
 var cosmos = builder.AddAzureCosmosDB("cosmosDb").RunAsEmulator(
@@ -19,6 +20,8 @@ var cosmos = builder.AddAzureCosmosDB("cosmosDb").RunAsEmulator(
             .WithGatewayPort(49254)
             .WithHttpEndpoint(targetPort: 1234, name: "explorer-port")
             .WithDataVolume("cosmos-drive");
+        
+        emulator.WithLifetime(ContainerLifetime.Persistent);
     });
 
 
