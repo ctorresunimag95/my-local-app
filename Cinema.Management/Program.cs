@@ -1,4 +1,4 @@
-using Cinema.Management.Movies.Publish;
+using Cinema.Management.Movies.PublishMovie;
 using Cinema.Management.Otel;
 using Cinema.Management.Persistence;
 using Microsoft.AspNetCore.Mvc;

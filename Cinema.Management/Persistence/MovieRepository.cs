@@ -1,5 +1,4 @@
 ﻿using Cinema.Management.Models;
-using Cinema.Management.Movies.Publish;
 using Microsoft.Azure.Cosmos;
 
 namespace Cinema.Management.Persistence;
