@@ -39,7 +39,7 @@ internal static class PersistenceExtensions
         );
 
         await database.Database.CreateContainerIfNotExistsAsync(
-            id: "Movies",
+            id: "Movies", 
             partitionKeyPath: "/genre"
         );
     }
