@@ -1,7 +1,7 @@
 using Cinema.Reservation.Bus;
 using Cinema.Reservation.Cache;
 using Cinema.Reservation.Models;
-using Cinema.Reservation.Movies.Publish;
+using Cinema.Reservation.Movies.MoviePublished;
 using Cinema.Reservation.Otel;
 using Scalar.AspNetCore;
 using ZiggyCreatures.Caching.Fusion;

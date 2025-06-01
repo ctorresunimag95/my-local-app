@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using Azure.Messaging.ServiceBus;
-using Cinema.Reservation.Movies.Publish;
+using Cinema.Reservation.Movies.MoviePublished;
 
 namespace Cinema.Reservation.Bus;
 
