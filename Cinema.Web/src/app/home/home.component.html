@@ -1,0 +1,12 @@
+<nz-spin [nzSpinning]="isLoading">
+    <div class="segment-wrapper" nz-flex [nzJustify]="selectedJustification" [nzAlign]="selectedLAlignment">
+        @for(movie of movies; track movie.id) {
+        <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+            <nz-card-meta nzTitle="{{movie.name}}"></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate>
+            <img alt="image" src="{{movie.posterUrl}}" />
+        </ng-template>
+        }
+    </div>
+</nz-spin>

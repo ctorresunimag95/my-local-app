@@ -10,6 +10,11 @@
     <ItemGroup>
         <PackageReference Include="Azure.Messaging.ServiceBus" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
         <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" />
         <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
@@ -30,6 +35,10 @@
 
     <ItemGroup>
         <RuntimeHostConfigurationOption Include="Azure.Experimental.EnableActivitySource" Value="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cinema.ServiceDefaults\Cinema.ServiceDefaults.csproj" />
     </ItemGroup>
 
 </Project>

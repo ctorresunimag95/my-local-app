@@ -5,10 +5,13 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Avengers",
-  "description": "Lorem ipsum",
-  "genre": "Heroes",
-  "producer": "Marvel",
-  "releaseDate": "2015-03-27"
+  "name": "The Avengers",
+  "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+  "genre": "Action, Sci-Fi",
+  "posterUri": "https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg",
+  "releaseDate": "2012-05-04"
 }
+###
+
+GET {{host}}/movies/search?title=avengers
 ###

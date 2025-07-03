@@ -31,4 +31,8 @@
         <RuntimeHostConfigurationOption Include="Azure.Experimental.EnableActivitySource" Value="true" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Cinema.ServiceDefaults\Cinema.ServiceDefaults.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -18,13 +18,13 @@ internal class PublishMovieHandler
 
     public async Task<Movie> HandleAsync(MovieDto movieDto, CancellationToken token = default)
     {
-        var movie = new Movie(movieDto.Name, movieDto.Description, movieDto.Genre, movieDto.Producer,
+        var movie = new Movie(movieDto.Name, movieDto.Description, movieDto.Genre, movieDto.PosterUri,
             movieDto.ReleaseDate);
         await _movieRepository.AddAsync(movie, token);
 
         // Publish event
         var movieCreatedEvent = new MovieCreatedEvent(movie.Id, movieDto.Name, movieDto.Description,
-            movieDto.Genre);
+            movieDto.Genre, movieDto.PosterUri);
 
         var sender = _serviceBusClient.CreateSender("movie.management.topic");
 

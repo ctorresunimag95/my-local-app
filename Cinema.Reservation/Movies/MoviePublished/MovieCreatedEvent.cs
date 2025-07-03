@@ -4,4 +4,5 @@ public record MovieCreatedEvent(
     Guid Id,
     string Name,
     string Description,
-    string Genre);
+    string Genre,
+    string PosterUri);

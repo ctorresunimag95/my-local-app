@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Reservation", "Cinem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.AppHost", "Cinema.AppHost\Cinema.AppHost.csproj", "{C389D480-9A66-46DC-88E6-A22C5611D76B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Gateway", "Cinema.Gateway\Cinema.Gateway.csproj", "{6BA31A12-4517-4FFE-908B-480A8765BBE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.ServiceDefaults", "Cinema.ServiceDefaults\Cinema.ServiceDefaults.csproj", "{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C389D480-9A66-46DC-88E6-A22C5611D76B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BA31A12-4517-4FFE-908B-480A8765BBE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA31A12-4517-4FFE-908B-480A8765BBE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA31A12-4517-4FFE-908B-480A8765BBE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA31A12-4517-4FFE-908B-480A8765BBE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

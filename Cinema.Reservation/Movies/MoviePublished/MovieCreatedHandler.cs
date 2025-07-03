@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Cinema.Reservation.Models;
+using Cinema.Reservation.Persistence;
 using ZiggyCreatures.Caching.Fusion;
 
 namespace Cinema.Reservation.Movies.MoviePublished;
@@ -7,27 +8,22 @@ namespace Cinema.Reservation.Movies.MoviePublished;
 internal class MovieCreatedHandler
 {
     private readonly IFusionCache _cache;
+    private readonly IMovieRepository _movieRepository;
 
-    public MovieCreatedHandler(IFusionCache cache)
+    public MovieCreatedHandler(IFusionCache cache, IMovieRepository movieRepository)
     {
         _cache = cache;
+        _movieRepository = movieRepository;
     }
 
     public async Task HandleAsync(MovieCreatedEvent @event, CancellationToken cancellationToken)
     {
         using var activty = ApplicationDiagnostics.ActivitySource.StartActivity("MovieCreatedReceiver");
         
-        await _cache.GetOrSetAsync($"movies-{@event.Id}", async _ =>
-        {
-            await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
-            
-            var movie = new Movie(@event.Id, @event.Name, @event.Description, @event.Genre);
+        await _movieRepository.AddAsync(new Movie(@event.Id, @event.Name, @event.Description, @event.Genre, @event.PosterUri),
+            cancellationToken);
 
-            return movie;
-        }, options: new FusionCacheEntryOptions
-        {
-            DistributedCacheDuration = TimeSpan.FromHours(12)
-        },token: cancellationToken);
+        await _cache.RemoveByTagAsync("movies");
 
         activty?.SetStatus(ActivityStatusCode.Ok);
     }

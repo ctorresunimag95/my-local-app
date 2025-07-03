@@ -1,0 +1,25 @@
+<nz-layout>
+  <nz-header>
+    <div class="logo">
+      <nz-icon nzType="home" nzTheme="outline" />
+      <span>CTC Cinema</span>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li nz-menu-item [routerLink]="['/reservation']" routerLinkActive="active">Reservation</li>
+      <li nz-menu-item [routerLink]="['/management/movies/publish']" routerLinkActive="active">Management</li>
+    </ul>
+  </nz-header>
+  <nz-layout>
+    <nz-layout class="inner-layout">
+      <!-- <nz-breadcrumb>
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>List</nz-breadcrumb-item>
+        <nz-breadcrumb-item>App</nz-breadcrumb-item>
+      </nz-breadcrumb> -->
+      <nz-content>
+        <app-global-alert />
+        <router-outlet />
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

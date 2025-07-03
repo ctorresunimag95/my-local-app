@@ -4,6 +4,6 @@ public record MovieDto(
     string Name,
     string Description,
     string Genre,
-    string Producer,
+    string PosterUri,
     DateTime ReleaseDate
 );

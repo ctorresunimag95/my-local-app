@@ -1,0 +1,27 @@
+@host=http://localhost:5265
+
+### management-get-movie-info
+GET {{host}}/api/management/movies/search?title=avengers
+
+### management-publish-movie
+POST {{host}}/api/management/movies/publish
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "The Avengers",
+  "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+  "genre": "Action, Sci-Fi",
+  "posterUri": "https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg",
+  "releaseDate": "2012-05-04"
+}
+
+### reservation-get-movie-by-id
+GET {{host}}/api/reservation/movies/86CE7287-D148-484D-9FBE-55D23626425A
+Accept: application/json
+
+### reservation-get-movies
+GET {{host}}/api/reservation/movies
+Accept: application/json
+
+
