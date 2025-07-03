@@ -13,8 +13,8 @@ This repository contains a sample distributed system for a cinema management and
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/cinema-distributed-system.git
-cd cinema-distributed-system
+git clone https://github.com/ctorresunimag95/my-local-app.git
+cd my-local-app
 ```
 
 ### Set Up Environment Variables
@@ -41,6 +41,8 @@ This command will start the following services:
 
 - **management**: Cinema management service
 - **reservation**: Cinema reservation service
+- **gateway**: API Gateway (YARP) — [http://localhost:5265](http://localhost:5265)
+- **web**: Angular front-end — [http://localhost:54163](http://localhost:54163)
 - **sb-emulator**: Azure Service Bus emulator
 - **sqledge**: Azure SQL Edge (used internally by the Service Bus Emulator)
 - **aspire-dashboard**: OpenTelemetry dashboard
@@ -49,25 +51,17 @@ This command will start the following services:
 
 #### Accessing the Services
 
+- **Angular App**: [http://localhost:54163](http://localhost:54163)
+- **Gateway (YARP)**: [http://localhost:5265](http://localhost:5265)
 - **Management Service**: http://localhost:43301
 - **Reservation Service**: http://localhost:43302
 - **Aspire Dashboard**: http://localhost:18888
-
-#### Stopping the Services
-
-To stop the services, run:
-
-```sh
-docker compose down
-```
 
 ---
 
 ### Option 2: Running the AppHost Project
 
-Aspire simplifies the setup and management of dependencies, but instead of using the `aspire run` command, you need to run the **AppHost** project directly. This project orchestrates the distributed system and starts all required services.
-
-#### Run the AppHost Project
+Aspire simplifies the setup and management of dependencies. To run the full distributed system, including the gateway and Angular app:
 
 1. Open the solution in your IDE (e.g., Visual Studio or Visual Studio Code).
 2. Set the **AppHost** project as the startup project.
@@ -75,18 +69,62 @@ Aspire simplifies the setup and management of dependencies, but instead of using
 
 The AppHost project will automatically start all required services and dependencies, including:
 
+- Angular front-end (port 54163)
+- API Gateway (YARP, port 5265)
+- Management and Reservation services
 - Redis
 - Azure Service Bus emulator
 - Azure Cosmos DB emulator
-- Management and Reservation services
+
+### OMDb API Key Requirement
+
+The **Management** service uses the [OMDb API](https://www.omdbapi.com/) to fetch movie information.  
+To enable the movie publishing feature, you need to obtain a free OMDb API key:
+
+1. Go to [https://www.omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx) and request a free API key.
+2. Once you receive your key, provide it to the application as follows:
+
+- **Docker Compose:**  
+  Add the key to your `.env` file or as an environment variable, for example:  
+  `OMDB_API_KEY=your_api_key_here`
+
+- **Aspire (AppHost):**  
+  You can securely store the key using [.NET user secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets).  
+  Run the following command in the `Cinema.AppHost` project directory:  
+  ```sh
+  dotnet user-secrets set "omdbApiKey" "your_api_key_here"
+  ```
+
+Without this key, the publisher functionality in the Management application will not be able to retrieve real time movie information.
 
 #### Accessing the Services
 
-- **Management Service**: http://localhost:5153
-- **Reservation Service**: http://localhost:5020
-- **Aspire Dashboard**: http://localhost:15105
+- **Angular App**: [http://localhost:54163](http://localhost:54163)
+- **Gateway (YARP)**: [http://localhost:5265](http://localhost:5265)
+- **Management Service**: http://localhost:43301
+- **Reservation Service**: http://localhost:43302
+- **Aspire Dashboard**: http://localhost:18888
 
-#### Stopping the Services
+---
+
+## Angular Application
+
+The Angular front-end provides a user interface for both movie reservations and management.
+
+### Screenshots
+
+#### Reservation Screen
+
+<!-- Add a screenshot of the reservation screen here -->
+![Reservation Screen](screenshots/reservation.png)
+
+#### Management - Publish Movie Screen
+
+<!-- Add a screenshot of the management publish movie screen here -->
+![Publish Movie Screen](screenshots/publish-movie.png)
+
+
+### Stopping the Services
 
 To stop the services, stop the AppHost project in your IDE.
 
@@ -118,8 +156,11 @@ You can use tools like `curl`, Postman, or any HTTP client to send this request.
 
 - `Cinema.Management/`: Management service for handling cinema operations.
 - `Cinema.Reservation/`: Reservation service for handling movie reservations.
+- `Cinema.Gateway/`: API Gateway using YARP.
+- `Cinema.Web/`: Angular front-end application.
 - `containers/service-bus/`: Configuration for the Azure Service Bus emulator.
 - `compose.yaml`: Docker Compose file to define and run multi-container Docker applications.
+
 
 ---
 
