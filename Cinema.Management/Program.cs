@@ -1,7 +1,9 @@
+using Cinema.Management.Movies;
 using Cinema.Management.Movies.PublishMovie;
 using Cinema.Management.Movies.PullMovieData;
 using Cinema.Management.Otel;
 using Cinema.Management.Persistence;
+using Cinema.ServiceDefaults;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Azure;
@@ -32,31 +34,25 @@ builder.Services.AddHttpClient<OmdbService>(client =>
         new Uri(builder.Configuration.GetValue<string>("omdb:apiUrl")!);
 });
 
+builder.Services
+    .AddProblemDetails(options =>
+        options.CustomizeProblemDetails = ctx =>
+        {
+            ctx.ProblemDetails.Extensions.Add("trace-id", ctx.HttpContext.TraceIdentifier);
+            ctx.ProblemDetails.Extensions.Add("instance", $"{ctx.HttpContext.Request.Method} {ctx.HttpContext.Request.Path}");
+        });
+builder.Services.AddExceptionHandler<ExceptionToProblemDetailsHandler>();
+
 var app = builder.Build();
+
+app.UseStatusCodePages();
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 app.MapOpenApi();
 app.MapScalarApiReference();
 
-app.MapPost("/movies/publish", async ([FromBody] MovieDto movieDto,
-    [FromServices] PublishMovieHandler handler,
-    CancellationToken cancellationToken) =>
-{
-    var movie = await handler.HandleAsync(movieDto, cancellationToken);
-
-    return Results.Ok(movie);
-});
-
-app.MapGet("/movies/search",
-    async Task<Results<Ok<MovieResponseDto>, NotFound>> ([FromQuery] string title, OmdbService omdbService,
-        CancellationToken cancellationToken) =>
-    {
-        var movie = await omdbService.GetMovieAsync(title, cancellationToken);
-
-        if (movie is null) return TypedResults.NotFound();
-
-        return TypedResults.Ok(movie);
-    });
+app.MapMoviesEndpoints();
 
 await app.CreateDbIfNotExistsAsync();
 
