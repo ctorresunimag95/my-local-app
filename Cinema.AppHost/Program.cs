@@ -31,7 +31,7 @@ var cosmos = builder.AddAzureCosmosDB("cosmosDb").RunAsEmulator(emulator =>
     emulator.WithLifetime(ContainerLifetime.Persistent);
 });
 
-var omdbApiKey = builder.AddParameter("omdbApiKey", builder.Configuration.GetValue<string>("omdApiKey")!, secret: true);
+var omdbApiKey = builder.AddParameter("omdbApiKey", builder.Configuration.GetValue<string>("omdb:apiKey")!, secret: true);
 
 var management = builder.AddProject<Projects.Cinema_Management>("management")
     .WithEnvironment("omdb:apiKey", omdbApiKey)
@@ -41,6 +41,10 @@ var management = builder.AddProject<Projects.Cinema_Management>("management")
     .WaitFor(serviceBus)
     .WaitFor(cosmos);
 
+var reservationMigrationService = builder.AddProject<Projects.Cinema_Reservation_MigrationWorker>("reservation-migration")
+    .WithReference(db, "database")
+    .WaitFor(db);
+
 var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     .WithReference(cache, "redis")
     .WithReference(serviceBus, "serviceBus")
@@ -49,7 +53,8 @@ var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     // Added this wait to avoid service bus connectivity error. Waiting for management will help to wait SB being ready
     .WaitFor(management)
     .WithReference(db, "database")
-    .WaitFor(db);
+    .WaitFor(db)
+    .WaitFor(reservationMigrationService);
 
 var gateway = builder.AddProject<Projects.Cinema_Gateway>("gateway")
     .WithReference(management)

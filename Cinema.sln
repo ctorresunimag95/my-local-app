@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Gateway", "Cinema.Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.ServiceDefaults", "Cinema.ServiceDefaults\Cinema.ServiceDefaults.csproj", "{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Reservation.MigrationWorker", "Cinema.Reservation.MigrationWorker\Cinema.Reservation.MigrationWorker.csproj", "{CE3AF946-1FFD-474A-9E6D-A064E84EB891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3AF946-1FFD-474A-9E6D-A064E84EB891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3AF946-1FFD-474A-9E6D-A064E84EB891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3AF946-1FFD-474A-9E6D-A064E84EB891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3AF946-1FFD-474A-9E6D-A064E84EB891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

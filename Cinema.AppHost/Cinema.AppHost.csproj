@@ -23,6 +23,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Cinema.Gateway\Cinema.Gateway.csproj" />
       <ProjectReference Include="..\Cinema.Management\Cinema.Management.csproj" />
+      <ProjectReference Include="..\Cinema.Reservation.MigrationWorker\Cinema.Reservation.MigrationWorker.csproj" />
       <ProjectReference Include="..\Cinema.Reservation\Cinema.Reservation.csproj" />
     </ItemGroup>
 
