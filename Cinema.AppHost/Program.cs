@@ -71,3 +71,6 @@ builder
     .WithExternalHttpEndpoints();
 
 builder.Build().Run();
+
+// make Program visible to the integration test project
+public partial class Program;
