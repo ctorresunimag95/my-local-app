@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{233EDF36
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Functional.Tests", "Cinema.Functional.Tests\Cinema.Functional.Tests.csproj", "{6D3587E0-3104-4A9D-87B4-BB828DDE6BF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Management.Integration.Tests", "Cinema.Management.Integration.Tests\Cinema.Management.Integration.Tests.csproj", "{FC1A002C-020C-4C9B-877D-4D79E5FD5270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{6D3587E0-3104-4A9D-87B4-BB828DDE6BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D3587E0-3104-4A9D-87B4-BB828DDE6BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D3587E0-3104-4A9D-87B4-BB828DDE6BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1A002C-020C-4C9B-877D-4D79E5FD5270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1A002C-020C-4C9B-877D-4D79E5FD5270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1A002C-020C-4C9B-877D-4D79E5FD5270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1A002C-020C-4C9B-877D-4D79E5FD5270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C389D480-9A66-46DC-88E6-A22C5611D76B} = {A702B132-CE6F-44DF-89B1-FCBDDF307E5C}
@@ -68,5 +74,6 @@ Global
 		{CE3AF946-1FFD-474A-9E6D-A064E84EB891} = {A702B132-CE6F-44DF-89B1-FCBDDF307E5C}
 		{523A6755-6A3B-4EAD-9EF7-8E0CD015E336} = {A702B132-CE6F-44DF-89B1-FCBDDF307E5C}
 		{6D3587E0-3104-4A9D-87B4-BB828DDE6BF7} = {233EDF36-3C08-4E88-A007-52E7715982F2}
+		{FC1A002C-020C-4C9B-877D-4D79E5FD5270} = {233EDF36-3C08-4E88-A007-52E7715982F2}
 	EndGlobalSection
 EndGlobal

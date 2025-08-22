@@ -1,7 +1,10 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using Azure.Messaging.ServiceBus;
 using Cinema.Management.Models;
 using Cinema.Management.Persistence;
+using OpenTelemetry;
+using OpenTelemetry.Context.Propagation;
 
 namespace Cinema.Management.Movies.PublishMovie;
 
@@ -18,6 +21,17 @@ internal class PublishMovieHandler
 
     public async Task<Movie> HandleAsync(MovieDto movieDto, CancellationToken token = default)
     {
+        var context = Propagators.DefaultTextMapPropagator.Extract(
+            new PropagationContext(Activity.Current?.Context ?? new ActivityContext(), Baggage.Current), 
+            new Dictionary<string, string[]>(), (headers, key) => headers.TryGetValue(key, out var value) ? value : null);
+        
+        Baggage.Current = context.Baggage;
+        
+        using var _ = ApplicationDiagnostics.ActivitySource.StartActivity("PublishMovie", 
+            ActivityKind.Server,
+            new ActivityContext(),
+            links: [new(context.ActivityContext)]);
+        
         var movie = new Movie(movieDto.Name, movieDto.Description, movieDto.Genre, movieDto.PosterUri,
             movieDto.ReleaseDate);
         await _movieRepository.AddAsync(movie, token);

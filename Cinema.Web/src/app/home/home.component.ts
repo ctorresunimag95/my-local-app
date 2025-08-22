@@ -5,10 +5,12 @@ import { NzAlign, NzFlexModule, NzJustify } from 'ng-zorro-antd/flex';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 @Component({
   selector: 'app-home',
-  imports: [NzFlexModule, NzSegmentedModule, NzCardModule, NzSpinModule],
+  imports: [NzFlexModule, NzSegmentedModule, NzCardModule, NzSpinModule, NzEmptyModule, NzGridModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   standalone: true

@@ -1,12 +1,24 @@
 <nz-spin [nzSpinning]="isLoading">
-    <div class="segment-wrapper" nz-flex [nzJustify]="selectedJustification" [nzAlign]="selectedLAlignment">
-        @for(movie of movies; track movie.id) {
-        <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
-            <nz-card-meta nzTitle="{{movie.name}}"></nz-card-meta>
-        </nz-card>
-        <ng-template #coverTemplate>
-            <img alt="image" src="{{movie.posterUrl}}" />
-        </ng-template>
+    <div class="segment-wrapper" nz-row nzGutter="16">
+        @if (movies.length === 0) {
+            <nz-empty [nzNotFoundContent]="contentTpl">
+                <ng-template #contentTpl>
+                    <span>
+                        No Movies Found
+                    </span>
+                </ng-template>
+            </nz-empty>
+        } @else {
+            @for(movie of movies; track movie.id) {
+                <div nz-col [nzSpan]="6" class="movie-card-col">
+                    <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+                        <nz-card-meta nzTitle="{{movie.name}}"></nz-card-meta>
+                    </nz-card>
+                    <ng-template #coverTemplate>
+                        <img alt="image" src="{{movie.posterUrl}}" />
+                    </ng-template>
+                </div>
+            }
         }
     </div>
 </nz-spin>
