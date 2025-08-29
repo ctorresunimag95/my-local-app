@@ -1,0 +1,65 @@
+<div nz-row>
+    <div nz-col nzSpan="10" nzOffset="2">
+        <h1>Publish Movie</h1>
+        <p>Use this form publish a new movie.</p>
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is required!">
+                    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                        <input type="text" nz-input placeholder="input movie title/name" nz-input formControlName="name"
+                            id="name" />
+                    </nz-input-group>
+                    <ng-template #suffixIconButton>
+                        <button type="button" (click)="searchMovie()" nz-button nzType="primary" nzSearch><nz-icon
+                                nzType="search" /></button>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="description">Description</nz-form-label>
+                <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is required!">
+                    <nz-textarea-count>
+                        <textarea rows="4" formControlName="description" placeholder="short description"
+                            nz-input></textarea>
+                    </nz-textarea-count>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="genre">Genre</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is required!">
+                    <nz-input-group>
+                        <input type="text" nz-input placeholder="genre: Action, Adventure, Sci-Fi, etc" nz-input
+                            formControlName="genre" id="genre" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="releaseDate">Release Date</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is required!">
+                    <nz-date-picker formControlName="releaseDate" nzFormat="dd/MM/yyyy"
+                        nzPlaceHolder="Select date"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row class="register-area">
+                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                    <button nz-button nzType="primary">Publish</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </div>
+    <div nz-col nzSpan="10" nzOffset="2">
+        <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate" [nzLoading]="searchingMovie">
+            <nz-card-meta [nzTitle]="movieSearchInfo ? movieSearchInfo.title : 'Movie title'"
+                [nzDescription]="movieSearchInfo?.genre ?? 'Genre'"></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate>
+            @if(movieSearchInfo?.poster != null && movieSearchInfo?.poster != '') {
+            <img nz-image width="240px" height="200px" [nzSrc]="movieSearchInfo!.poster" [nzFallback]="fallback"
+                alt="movie-image" />
+            } @else {
+            <img nz-image width="200px" height="200px" nzSrc="error" [nzFallback]="fallback" alt="" />
+            }
+        </ng-template>
+    </div>
+</div>
