@@ -112,7 +112,7 @@ export class PublishComponent implements OnInit, OnDestroy {
 
           this.alert.show('success', 'Movie published successfully!');
 
-          this.router.navigate(['']);
+          this.router.navigate(['/reservation']);
         },
         error: (error) => {
           console.error('Error publishing movie:', error);

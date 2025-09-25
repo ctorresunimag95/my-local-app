@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Azure.Messaging.ServiceBus;
 using Cinema.Management.Models;
+using Cinema.Management.Otel;
 using Cinema.Management.Persistence;
 using OpenTelemetry;
 using OpenTelemetry.Context.Propagation;
@@ -12,11 +13,15 @@ internal class PublishMovieHandler
 {
     private readonly ServiceBusClient _serviceBusClient;
     private readonly MovieRepository _movieRepository;
+    private readonly ManagementMeter _managementMeter;
 
-    public PublishMovieHandler(ServiceBusClient serviceBusClient, MovieRepository movieRepository)
+    public PublishMovieHandler(ServiceBusClient serviceBusClient
+        , MovieRepository movieRepository
+        , ManagementMeter managementMeter)
     {
         _serviceBusClient = serviceBusClient;
         _movieRepository = movieRepository;
+        _managementMeter = managementMeter;
     }
 
     public async Task<Movie> HandleAsync(MovieDto movieDto, CancellationToken token = default)
@@ -45,6 +50,8 @@ internal class PublishMovieHandler
         var message = new ServiceBusMessage(JsonSerializer.Serialize(movieCreatedEvent));
 
         await sender.SendMessageAsync(message, token);
+
+        _managementMeter.MovieCreated(movieDto.Genre, movieDto.ReleaseDate.Year);
 
         return movie;
     }

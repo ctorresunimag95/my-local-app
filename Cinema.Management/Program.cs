@@ -4,11 +4,8 @@ using Cinema.Management.Movies.PullMovieData;
 using Cinema.Management.Otel;
 using Cinema.Management.Persistence;
 using Cinema.ServiceDefaults;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Azure;
 using Scalar.AspNetCore;
-using MovieDto = Cinema.Management.Movies.PublishMovie.MovieDto;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +22,12 @@ builder.Services.AddScoped<PublishMovieHandler>();
 
 //builder.Services.AddOtel(builder.Environment);
 builder.AddServiceDefaults();
+builder.Services.AddMetrics();
+builder.Services.AddSingleton<ManagementMeter>();
+
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(metrics => metrics
+            .AddMeter(ManagementMeter.MeterName));
 
 builder.Services.AddPersistence(builder.Configuration);
 
