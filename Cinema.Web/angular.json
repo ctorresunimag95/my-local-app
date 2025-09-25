@@ -57,6 +57,11 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -69,6 +74,9 @@
             },
             "development": {
               "buildTarget": "Cinema.Web:build:development"
+            },
+            "local": {
+              "buildTarget": "Cinema.Web:build:local"
             }
           },
           "defaultConfiguration": "development",

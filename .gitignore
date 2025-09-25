@@ -408,3 +408,6 @@ FodyWeavers.xsd
 
 # Environment file
 .env
+
+.DS_Store
+dist/

@@ -5,6 +5,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { GlobalAlertComponent } from './shared/components/alert/global.alert.component';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -23,5 +24,9 @@ import { GlobalAlertComponent } from './shared/components/alert/global.alert.com
 export class AppComponent {
   title = 'Cinema.Web';
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private auth: AuthService) { }
+
+  logout() {
+    this.auth.logout();
+  }
 }
