@@ -3,7 +3,6 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Aspirant.Hosting.Yarp" Version="0.0.4" />
     <PackageVersion Include="Aspire.Hosting" Version="9.5.0" />
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.0" />
     <PackageVersion Include="Aspire.Azure.CosmosDB" Version="9.5.0" />
