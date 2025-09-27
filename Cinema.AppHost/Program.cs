@@ -34,8 +34,8 @@ var cosmos = builder.AddAzureCosmosDB("cosmosDb").RunAsEmulator(emulator =>
 var omdbApiKey = builder.AddParameter("omdbApiKey", builder.Configuration.GetValue<string>("omdb:apiKey")!, secret: true);
 
 var management = builder.AddProject<Projects.Cinema_Management>("management")
-    .WithEnvironment("omdb:apiKey", omdbApiKey)
-    .WithEnvironment("omdb:apiUrl", "https://www.omdbapi.com/")
+    .WithEnvironment("omdb__apiKey", omdbApiKey)
+    .WithEnvironment("omdb__apiUrl", "https://www.omdbapi.com/")
     .WithReference(serviceBus, connectionName: "serviceBus")
     .WithReference(cosmos, connectionName: "cosmosDb")
     .WaitFor(serviceBus)
