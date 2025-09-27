@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reservation-migration
+  labels:
+    app: reservation-migration
+spec:
+  minReadySeconds: 60
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reservation-migration
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: reservation-migration
+    spec:
+      containers:
+      - name: reservation-migration
+        image: docker.io/catorres95/cinema-migration-worker:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: reservation-migration-env
+        - secretRef:
+            name: reservation-migration-secrets
+      terminationGracePeriodSeconds: 180

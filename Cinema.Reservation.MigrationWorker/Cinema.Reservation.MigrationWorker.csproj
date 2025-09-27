@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-Cinema.Reservation.MigrationWorker-de2e2788-5dfe-4ce6-aa9a-ebd6fffc6192</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<ContainerRepository>cinema-migration-worker</ContainerRepository>
     </PropertyGroup>
 
     <ItemGroup>

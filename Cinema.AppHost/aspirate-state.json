@@ -1,0 +1,51 @@
+{
+  "projectPath": ".",
+  "inputPath": "aspirate-output",
+  "outputPath": "aspirate-output",
+  "namespace": "cinema",
+  "containerRegistry": "docker.io",
+  "containerImageTags": [
+    "latest"
+  ],
+  "containerBuilder": "docker",
+  "containerRepositoryPrefix": "catorres95",
+  "kubeContext": "docker-desktop",
+  "outputFormat": "kustomize",
+  "skipFinalKustomizeGeneration": false,
+  "privateRegistryEmail": "aspir8@aka.ms",
+  "includeDashboard": true,
+  "useCustomNamespace": true,
+  "secrets": {
+    "salt": "lIIKIwNw\u002BmaDcC9x",
+    "hash": "xIzsF\u002B2Tvd3/Hx2z6\u002BgAhPR7KjPyV7Ybqkzn\u002BNPag6w=",
+    "secrets": {
+      "sql-password": {
+        "value": "lIIKIwNw\u002BmaDcC9xLJgli4h/676pMdfsSlM7NDfjJ6/WWIjwBG9PLOlbWdVxmZPv5ds="
+      },
+      "cache-password": {
+        "value": "lIIKIwNw\u002BmaDcC9xU4pLmTvG/ImBEP13MzPFQyzVEZPWZ7nhHzZpM6NrbPFSkZ\u002BwvYg="
+      },
+      "omdbApiKey": {
+        "value": "lIIKIwNw\u002BmaDcC9xbYq2ZSOAGsGfZ59rIWZNuFzFXe/HdsE="
+      },
+      "sql": {
+        "MSSQL_SA_PASSWORD": "lIIKIwNw\u002BmaDcC9xLJgli4h/676pMdfsSlM7NDfjJ6/WWIjwBG9PLOlbWdVxmZPv5ds="
+      },
+      "cinema": {},
+      "cache": {},
+      "management": {
+        "ConnectionStrings__serviceBus": "lIIKIwNw\u002BmaDcC9xFm\u002BqbbvgX92qyng5PNjAuRXXDKrSepPUJXRTW/JOTs1cnoDquoVLzQT05Bus",
+        "ConnectionStrings__cosmosDb": "lIIKIwNw\u002BmaDcC9xWLEnMuyw7Qbamyu5cFK8vxXHBqvJfIP1BS9DGv9PRcBNlJvthp9q0Bj69w=="
+      },
+      "reservation-migration": {
+        "ConnectionStrings__database": "lIIKIwNw\u002BmaDcC9xQSZWLsbXvMANvvhkd3\u002Bt5D3BG67BYc3CFm0MQKQVEpYCqIfmp8tR/Uvu60eB0DXhAdvlB/Giibm5CqxErSIbSb2\u002B/B9dUd8pozz8f05QJuPZVD9Sl/HmHXIEzbaS2FTOjNPcwVmFiEpNuyeEX1991eJijLrmB6Z3XDbV9Kgd"
+      },
+      "reservation": {
+        "ConnectionStrings__redis": "lIIKIwNw\u002BmaDcC9xs3juvPeNiiFCkCPmlu6fVg3FCrDBKcaCUDgMBfBSU9RWj5C\u002Bl5pg8gTpwyyphg/URP7bMaeXpcSmGw==",
+        "ConnectionStrings__serviceBus": "lIIKIwNw\u002BmaDcC9xFm\u002BqbbvgX92qyng5PNjAuRXXDKrSepPUJXRTW/JOTs1cnoDquoVLzQT05Bus",
+        "ConnectionStrings__database": "lIIKIwNw\u002BmaDcC9xQSZWLsbXvMANvvhkd3\u002Bt5D3BG67BYc3CFm0MQKQVEpYCqIfmp8tR/Uvu60eB0DXhAdvlB/Giibm5CqxErSIbSb2\u002B/B9dUd8pozz8f05QJuPZVD9Sl/HmHXIEzbaS2FTOjNPcwVmFiEpNuyeEX1991eJijLrmB6Z3XDbV9Kgd"
+      },
+      "gateway": {}
+    }
+  }
+}

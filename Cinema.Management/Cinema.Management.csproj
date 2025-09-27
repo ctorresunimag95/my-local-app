@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<ContainerRepository>cinema-management</ContainerRepository>
     </PropertyGroup>
 
     <ItemGroup>

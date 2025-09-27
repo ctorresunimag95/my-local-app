@@ -1,0 +1,16 @@
+namespace: cinema
+
+resources:
+- sql
+- cache
+- management
+- reservation-migration
+- reservation
+- gateway
+- namespace.yaml
+- dashboard.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+
