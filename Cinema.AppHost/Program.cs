@@ -63,6 +63,7 @@ var gateway = builder.AddProject<Projects.Cinema_Gateway>("gateway")
     .WaitFor(reservation)
     .WithExternalHttpEndpoints();
 
+
 builder
     .AddNpmApp("cinema-web", "../Cinema.Web")
     .WithReference(gateway)
