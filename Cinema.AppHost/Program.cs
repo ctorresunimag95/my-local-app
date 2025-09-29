@@ -1,3 +1,4 @@
+using Aspire.Hosting.Yarp.Transforms;
 using Microsoft.Extensions.Configuration;
 
 var builder = DistributedApplication.CreateBuilder(args);
@@ -56,13 +57,18 @@ var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     .WaitFor(db)
     .WaitFor(reservationMigrationService);
 
-var gateway = builder.AddProject<Projects.Cinema_Gateway>("gateway")
-    .WithReference(management)
+var gateway = builder.AddYarp("gateway")
+    .WithConfiguration(yarp =>
+    {
+        yarp.AddRoute("/api/management/{**catch-all}", management)
+        .WithTransformPathPrefix("/api/management");
+
+        yarp.AddRoute("/api/reservation/{**catch-all}", management)
+        .WithTransformPathPrefix("/api/reservation");
+    })
     .WaitFor(management)
-    .WithReference(reservation)
     .WaitFor(reservation)
     .WithExternalHttpEndpoints();
-
 
 builder
     .AddNpmApp("cinema-web", "../Cinema.Web")
