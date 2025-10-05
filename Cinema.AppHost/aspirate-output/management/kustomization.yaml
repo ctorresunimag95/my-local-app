@@ -13,7 +13,7 @@ configMapGenerator:
     - OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY=in_memory
     - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
     - HTTP_PORTS=8080
-    - omdb__apiKey=2a47ce1
+    - omdb__apiKey=${OMDB_API_KEY}
     - omdb__apiUrl=https://www.omdbapi.com/
     - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
     - OTEL_SERVICE_NAME=management

@@ -15,7 +15,7 @@ var cache = builder.AddRedis("cache")
     .WithRedisInsight()
     .WithLifetime(ContainerLifetime.Persistent);
 
-var omdbApiKey = builder.AddParameter("omdbApiKey", builder.Configuration.GetValue<string>("omdb:apiKey")!/*, secret: true*/);
+var omdbApiKey = builder.AddParameter("omdbApiKey", builder.Configuration.GetValue<string>("omdb:apiKey")!, secret: true);
 
 var management = builder.AddProject<Projects.Cinema_Management>("management")
     .WithEnvironment("omdb__apiKey", omdbApiKey)
