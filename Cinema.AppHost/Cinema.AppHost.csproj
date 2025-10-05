@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
 
@@ -11,12 +11,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Hosting.AppHost" VersionOverride="9.4.1" />
-        <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" VersionOverride="9.4.1" />
-        <PackageReference Include="Aspire.Hosting.Azure.ServiceBus" VersionOverride="9.4.1" />
-        <PackageReference Include="Aspire.Hosting.NodeJs" VersionOverride="9.4.1" />
-        <PackageReference Include="Aspire.Hosting.Redis" VersionOverride="9.4.1" />
-        <PackageReference Include="Aspire.Hosting.SqlServer" VersionOverride="9.4.1" />
+		<PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" />
+        <PackageReference Include="Aspire.Hosting.Azure.ServiceBus" />
+        <PackageReference Include="Aspire.Hosting.NodeJs" />
+        <PackageReference Include="Aspire.Hosting.Redis" />
+        <PackageReference Include="Aspire.Hosting.SqlServer" />
     </ItemGroup>
 
     <ItemGroup>
