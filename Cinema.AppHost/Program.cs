@@ -8,7 +8,8 @@ builder.Configuration.AddUserSecrets<Program>();
 var sql = builder.AddSqlServer("sql")
     .WithHostPort(55425)
     .WithLifetime(ContainerLifetime.Persistent)
-    .WithDataVolume("sql-drive");
+    .WithDataVolume("cinema-sql-drive")
+    ;
 var db = sql.AddDatabase("cinema");
 
 var cache = builder.AddRedis("cache")
