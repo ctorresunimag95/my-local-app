@@ -40,13 +40,13 @@ var gateway = builder.AddProject<Projects.Cinema_Gateway>("gateway")
     .WaitFor(reservation)
     .WithExternalHttpEndpoints();
 
-builder
-    .AddNpmApp("cinema-web", "../Cinema.Web")
+builder.AddJavaScriptApp("cinema-web", "../Cinema.Web", runScriptName: "start")
     .WithReference(gateway)
     .WaitFor(gateway)
+    .WithEnvironment("BROWSER", "none") // Disable opening browser on npm start
     .WithHttpEndpoint(port: 54163, env: "PORT")
-    .WithExternalHttpEndpoints();
-
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
 
 if (builder.Environment.IsDevelopment() && !builder.ExecutionContext.IsPublishMode)
 {

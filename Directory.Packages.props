@@ -9,6 +9,7 @@
     <PackageVersion Include="Aspire.Azure.ServiceBus" Version="9.5.0" />
     <PackageVersion Include="Aspire.Hosting.Azure.CosmosDB" Version="13.0.2" />
     <PackageVersion Include="Aspire.Hosting.Azure.ServiceBus" Version="13.0.2" />
+    <PackageVersion Include="Aspire.Hosting.JavaScript" Version="13.0.2" />
     <PackageVersion Include="Aspire.Hosting.NodeJs" Version="9.5.2" />
     <PackageVersion Include="Aspire.Hosting.Redis" Version="13.0.2" />
     <PackageVersion Include="Aspire.Hosting.SqlServer" Version="13.0.2" />
