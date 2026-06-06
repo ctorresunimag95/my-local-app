@@ -62,7 +62,7 @@ if (builder.Environment.IsDevelopment() && !builder.ExecutionContext.IsPublishMo
     var cosmos = builder.AddAzureCosmosDB("cosmosDb").RunAsEmulator(emulator =>
     {
         emulator
-            .WithGatewayPort(49254)
+            .WithGatewayPort(8081)
             .WithHttpEndpoint(targetPort: 1234, name: "explorer-port")
             .WithDataVolume("cosmos-drive");
 

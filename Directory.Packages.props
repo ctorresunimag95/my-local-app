@@ -3,16 +3,15 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Aspire.Hosting" Version="13.0.2" />
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="13.0.2" />
+    <PackageVersion Include="Aspire.Hosting" Version="13.4.2" />
     <PackageVersion Include="Aspire.Azure.CosmosDB" Version="9.5.0" />
     <PackageVersion Include="Aspire.Azure.ServiceBus" Version="9.5.0" />
-    <PackageVersion Include="Aspire.Hosting.Azure.CosmosDB" Version="13.0.2" />
-    <PackageVersion Include="Aspire.Hosting.Azure.ServiceBus" Version="13.0.2" />
-    <PackageVersion Include="Aspire.Hosting.JavaScript" Version="13.0.2" />
+    <PackageVersion Include="Aspire.Hosting.Azure.CosmosDB" Version="13.4.2" />
+    <PackageVersion Include="Aspire.Hosting.Azure.ServiceBus" Version="13.4.2" />
+    <PackageVersion Include="Aspire.Hosting.JavaScript" Version="13.4.2" />
     <PackageVersion Include="Aspire.Hosting.NodeJs" Version="9.5.2" />
-    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.0.2" />
-    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="13.0.2" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.4.2" />
+    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="13.4.2" />
     <PackageVersion Include="Aspire.Hosting.Testing" Version="13.0.2" />
     <PackageVersion Include="Azure.Messaging.ServiceBus" Version="7.20.1" />
     <PackageVersion Include="coverlet.collector" Version="6.0.4" />
@@ -24,9 +23,9 @@
     <PackageVersion Include="Microsoft.Extensions.Azure" Version="1.13.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.1.0" />
-    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.1.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.6.0" />
     <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="10.1.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="10.6.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.14.0" />
