@@ -34,7 +34,8 @@ var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     .WaitFor(reservationMigrationService);
 
 var mailpit = builder.AddMailPit("mailpit")
-    .WithDataVolume("mailpit-data");
+    .WithDataVolume("mailpit-data")
+    .WithLifetime(ContainerLifetime.Persistent);
 
 var notification = builder.AddProject<Projects.Cinema_Notification>("notification")
     .WithReference(mailpit);
@@ -87,7 +88,8 @@ if (builder.Environment.IsDevelopment() && !builder.ExecutionContext.IsPublishMo
 
     notification.WithReference(serviceBus, "serviceBus")
         .WaitFor(serviceBus);
-} else
+}
+else
 {
     var serviceBusConnectionString = builder.AddConnectionString("serviceBus");
 
