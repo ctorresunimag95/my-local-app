@@ -1,0 +1,8 @@
+namespace Cinema.Notification.Movies.MoviePublished;
+
+public record MovieCreatedEvent(
+    Guid Id,
+    string Name,
+    string Description,
+    string Genre,
+    string PosterUri);

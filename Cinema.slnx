@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="compose.yaml" />
+    <File Path="containers/service-bus/config.json" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="Cinema.AppHost/Cinema.AppHost.csproj" />
+    <Project Path="Cinema.Gateway/Cinema.Gateway.csproj" />
+    <Project Path="Cinema.Management/Cinema.Management.csproj" />
+    <Project Path="Cinema.Reservation.MigrationWorker/Cinema.Reservation.MigrationWorker.csproj" />
+    <Project Path="Cinema.Notification/Cinema.Notification.csproj" />
+    <Project Path="Cinema.Reservation/Cinema.Reservation.csproj" />
+    <Project Path="Cinema.ServiceDefaults/Cinema.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="Cinema.Functional.Tests/Cinema.Functional.Tests.csproj" />
+    <Project Path="Cinema.Management.Integration.Tests/Cinema.Management.Integration.Tests.csproj" />
+  </Folder>
+</Solution>

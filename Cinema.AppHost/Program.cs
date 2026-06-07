@@ -33,6 +33,12 @@ var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     .WaitFor(db)
     .WaitFor(reservationMigrationService);
 
+var mailpit = builder.AddMailPit("mailpit")
+    .WithDataVolume("mailpit-data");
+
+var notification = builder.AddProject<Projects.Cinema_Notification>("notification")
+    .WithReference(mailpit);
+
 var gateway = builder.AddProject<Projects.Cinema_Gateway>("gateway")
     .WithReference(management)
     .WaitFor(management)
@@ -78,6 +84,9 @@ if (builder.Environment.IsDevelopment() && !builder.ExecutionContext.IsPublishMo
         .WaitFor(serviceBus)
         // Added this wait to avoid service bus connectivity error. Waiting for management will help to wait SB being ready
         .WaitFor(management);
+
+    notification.WithReference(serviceBus, "serviceBus")
+        .WaitFor(serviceBus);
 } else
 {
     var serviceBusConnectionString = builder.AddConnectionString("serviceBus");
@@ -88,6 +97,8 @@ if (builder.Environment.IsDevelopment() && !builder.ExecutionContext.IsPublishMo
         .WithReference(cosmosDbConnectionString, "cosmosDb");
 
     reservation.WithReference(serviceBusConnectionString, "serviceBus");
+
+    notification.WithReference(serviceBusConnectionString, "serviceBus");
 }
 
 builder.Build().Run();

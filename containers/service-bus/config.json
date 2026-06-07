@@ -24,6 +24,19 @@
                                     "RequiresSession": false
                                 },
                                 "Rules": []
+                            },
+                            {
+                                "Name": "movie.management.notification.subscription",
+                                "Properties": {
+                                    "DeadLetteringOnMessageExpiration": false,
+                                    "DefaultMessageTimeToLive": "PT1H",
+                                    "LockDuration": "PT1M",
+                                    "MaxDeliveryCount": 3,
+                                    "ForwardDeadLetteredMessagesTo": "",
+                                    "ForwardTo": "",
+                                    "RequiresSession": false
+                                },
+                                "Rules": []
                             }
                         ]
                     }
