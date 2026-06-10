@@ -1,3 +1,5 @@
+using Cinema.AppHost;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -11,6 +13,7 @@ var sql = builder.AddSqlServer("sql")
     .WithDataVolume("cinema-sql-drive")
     ;
 var db = sql.AddDatabase("cinema");
+db.WithClearMoviesCommand();
 
 var cache = builder.AddRedis("cache")
     .WithRedisInsight()
@@ -31,7 +34,24 @@ var reservation = builder.AddProject<Projects.Cinema_Reservation>("reservation")
     .WaitFor(cache)
     .WithReference(db, "database")
     .WaitFor(db)
-    .WaitFor(reservationMigrationService);
+    .WaitFor(reservationMigrationService)
+    .WithHttpCommand(
+        path: "/movies/cache",
+        displayName: "Invalidate cache",
+        commandOptions: new HttpCommandOptions()
+        {
+            Method = HttpMethod.Delete,
+            Description = """
+                Invalidates the movies API cache. All cached values are cleared!
+                """,
+            PrepareRequest = (context) =>
+            {
+                //context.Request.Headers.Add("X-CacheInvalidation-Key", $"Key: {key}");
+                return Task.CompletedTask;
+            },
+            IconName = "DocumentLightning",
+            IsHighlighted = true
+        });
 
 var mailpit = builder.AddMailPit("mailpit")
     .WithDataVolume("mailpit-data")

@@ -1,7 +1,6 @@
 ﻿using Cinema.Reservation.Models;
 using Cinema.Reservation.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using ZiggyCreatures.Caching.Fusion;
 
 namespace Cinema.Reservation.Movies;
@@ -15,6 +14,8 @@ public static class MoviesEndpoints
         group.MapGet("{id:guid}", GetMovieByIdAsync);
 
         group.MapGet("", GetMoviesAsync);
+
+        group.MapDelete("cache", ClearMoviesCacheAsync);
     }
 
     private static async Task<Results<Ok<Movie>, NotFound>> GetMovieByIdAsync(Guid id
@@ -58,5 +59,13 @@ public static class MoviesEndpoints
             , token: cancellationToken);
 
         return TypedResults.Ok(movies);
+    }
+
+    private static async Task<Results<NoContent, ProblemHttpResult>> ClearMoviesCacheAsync(IFusionCache cache
+    , CancellationToken cancellationToken)
+    {
+        await cache.RemoveByTagAsync("movies", token: cancellationToken);
+
+        return TypedResults.NoContent();
     }
 }

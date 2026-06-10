@@ -18,6 +18,7 @@
         <PackageReference Include="Aspire.Hosting.Redis" />
         <PackageReference Include="Aspire.Hosting.SqlServer" />
         <PackageReference Include="CommunityToolkit.Aspire.Hosting.MailPit" />
+        <PackageReference Include="Microsoft.Data.SqlClient" />
     </ItemGroup>
 
     <ItemGroup>
