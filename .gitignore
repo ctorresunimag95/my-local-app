@@ -408,6 +408,19 @@ FodyWeavers.xsd
 
 # Environment file
 .env
+.env.local
 
 .DS_Store
 dist/
+
+# Playwright Test Artifacts
+.playwright-cli/
+
+# Playwright E2E Tests
+/e2e/test-results/
+/e2e/playwright-report/
+/e2e/blob-report/
+/e2e/playwright/.cache/
+/e2e/npm-debug.log*
+/e2e/yarn-debug.log*
+/e2e/yarn-error.log*
