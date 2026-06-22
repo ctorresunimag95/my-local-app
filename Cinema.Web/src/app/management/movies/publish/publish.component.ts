@@ -106,7 +106,6 @@ export class PublishComponent implements OnInit, OnDestroy {
       this.movieService.publishMovie(publishMovieRequest).subscribe({
         next: (response: MoviePublishResponse) => {
           console.log('Movie published successfully:', response);
-          // Optionally, reset the form or show a success message
           this.validateForm.reset();
           this.movieSearchInfo = null;
 
@@ -116,7 +115,6 @@ export class PublishComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           console.error('Error publishing movie:', error);
-          // Optionally, show an error message to the user
         }
       });
 

@@ -1,22 +1,28 @@
 <nz-layout>
-  <nz-header>
-    <div class="logo">
-      <nz-icon nzType="home" nzTheme="outline" />
-      <span>CTC Cinema</span>
+  <nz-header class="app-header">
+    <div class="header-container">
+      <div class="logo">
+        <nz-icon nzType="play-circle" nzTheme="fill" class="logo-icon" />
+        <span class="logo-text">CTC Cinema</span>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+        <li nz-menu-item [routerLink]="['/reservation']" routerLinkActive="active">
+          <nz-icon nzType="video" class="menu-icon"></nz-icon>
+          Reservation
+        </li>
+        <li nz-menu-item [routerLink]="['/management/movies/publish']" routerLinkActive="active">
+          <nz-icon nzType="upload" class="menu-icon"></nz-icon>
+          Management
+        </li>
+        <li nz-menu-item (click)="logout()" class="logout-item">
+          <nz-icon nzType="logout" class="menu-icon"></nz-icon>
+          Logout
+        </li>
+      </ul>
     </div>
-    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li nz-menu-item [routerLink]="['/reservation']" routerLinkActive="active">Reservation</li>
-      <li nz-menu-item [routerLink]="['/management/movies/publish']" routerLinkActive="active">Management</li>
-      <li nz-menu-item  (click)="logout()">Logout</li>
-    </ul>
   </nz-header>
   <nz-layout>
     <nz-layout class="inner-layout">
-      <!-- <nz-breadcrumb>
-        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-        <nz-breadcrumb-item>List</nz-breadcrumb-item>
-        <nz-breadcrumb-item>App</nz-breadcrumb-item>
-      </nz-breadcrumb> -->
       <nz-content>
         <app-global-alert />
         <router-outlet />

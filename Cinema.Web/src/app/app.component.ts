@@ -9,10 +9,10 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, 
-    NzBreadCrumbModule, 
-    NzIconModule, 
-    NzMenuModule, 
+  imports: [RouterOutlet,
+    NzBreadCrumbModule,
+    NzIconModule,
+    NzMenuModule,
     NzLayoutModule,
     GlobalAlertComponent,
     RouterLink

@@ -12,8 +12,12 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
         path: '',
-        component: LoginComponent,
+        redirectTo: '/reservation',
         pathMatch: 'full'
     }
 ];

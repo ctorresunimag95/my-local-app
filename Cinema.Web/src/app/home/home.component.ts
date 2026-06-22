@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Movie } from '../reservation/types/movie.types';
 import { ReservationService } from '../reservation/services/reservation.service';
 import { NzAlign, NzFlexModule, NzJustify } from 'ng-zorro-antd/flex';
@@ -7,10 +8,12 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-home',
-  imports: [NzFlexModule, NzSegmentedModule, NzCardModule, NzSpinModule, NzEmptyModule, NzGridModule],
+  imports: [CommonModule, NzFlexModule, NzSegmentedModule, NzCardModule, NzSpinModule, NzEmptyModule, NzGridModule, NzIconModule, NzModalModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   standalone: true
@@ -20,6 +23,8 @@ export class HomeComponent {
   selectedJustification: NzJustify = 'space-evenly';
   selectedLAlignment: NzAlign = 'center';
   isLoading: boolean = false;
+  selectedMovie: Movie | null = null;
+  isModalVisible: boolean = false;
 
   constructor(private reservationService: ReservationService) {
   }
@@ -40,5 +45,15 @@ export class HomeComponent {
         this.isLoading = false;
       }
     });
+  }
+
+  openMovieModal(movie: Movie): void {
+    this.selectedMovie = movie;
+    this.isModalVisible = true;
+  }
+
+  closeModal(): void {
+    this.isModalVisible = false;
+    this.selectedMovie = null;
   }
 }

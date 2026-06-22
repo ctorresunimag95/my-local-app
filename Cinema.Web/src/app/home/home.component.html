@@ -1,24 +1,86 @@
-<nz-spin [nzSpinning]="isLoading">
-    <div class="segment-wrapper" nz-row nzGutter="16">
-        @if (movies.length === 0) {
-            <nz-empty [nzNotFoundContent]="contentTpl">
-                <ng-template #contentTpl>
-                    <span>
-                        No Movies Found
-                    </span>
-                </ng-template>
-            </nz-empty>
-        } @else {
-            @for(movie of movies; track movie.id) {
-                <div nz-col [nzSpan]="6" class="movie-card-col">
-                    <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
-                        <nz-card-meta nzTitle="{{movie.name}}"></nz-card-meta>
-                    </nz-card>
-                    <ng-template #coverTemplate>
-                        <img alt="image" src="{{movie.posterUrl}}" />
-                    </ng-template>
-                </div>
-            }
+<div class="movies-container">
+  <h1 class="page-title">Now Showing</h1>
+  <p class="page-subtitle">Click on a movie to view details</p>
+
+  <nz-spin [nzSpinning]="isLoading">
+    <div class="movies-grid" nz-row nzGutter="[24, 24]">
+      @if (movies.length === 0) {
+        <div nz-col [nzSpan]="24">
+          <nz-empty [nzNotFoundContent]="contentTpl">
+            <ng-template #contentTpl>
+              <span>No Movies Available</span>
+            </ng-template>
+          </nz-empty>
+        </div>
+      } @else {
+        @for (movie of movies; track movie.id) {
+          <div
+            nz-col
+            [nzXs]="24"
+            [nzSm]="12"
+            [nzMd]="8"
+            [nzLg]="6"
+            class="movie-card-col"
+          >
+            <div class="movie-card-wrapper" (click)="openMovieModal(movie)">
+              <nz-card nzHoverable class="movie-card" [nzCover]="coverTemplate">
+                <nz-card-meta
+                  [nzTitle]="movie.name"
+                  class="card-meta"
+                ></nz-card-meta>
+              </nz-card>
+            </div>
+            <ng-template #coverTemplate>
+              <img
+                alt="{{ movie.name }}"
+                src="{{ movie.posterUrl }}"
+                class="movie-poster"
+              />
+            </ng-template>
+          </div>
         }
+      }
     </div>
-</nz-spin>
+  </nz-spin>
+
+  <!-- Movie Details Modal -->
+  <nz-modal
+    [(nzVisible)]="isModalVisible"
+    nzTitle="Movie Details"
+    [nzFooter]="null"
+    (nzOnCancel)="closeModal()"
+    nzWidth="700px"
+    class="movie-modal"
+  >
+    <ng-container *nzModalContent>
+      @if (selectedMovie === null) {
+        <div class="loading-container">
+          <nz-spin nzSize="large"></nz-spin>
+        </div>
+      } @else {
+        <ng-container>
+          <div class="modal-content">
+            <div class="modal-image">
+              <img
+                [src]="selectedMovie.posterUrl"
+                [alt]="selectedMovie.name"
+                [title]="selectedMovie.name"
+              />
+            </div>
+            <div class="modal-info">
+              <h2>{{ selectedMovie.name }}</h2>
+              <div class="info-group">
+                <label>Genre:</label>
+                <p>{{ selectedMovie.genre || "N/A" }}</p>
+              </div>
+              <div class="info-group">
+                <label>Description:</label>
+                <p>{{ selectedMovie.description || "No description available" }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      }
+    </ng-container>
+  </nz-modal>
+</div>
